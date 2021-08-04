@@ -1,6 +1,8 @@
 <template>
-    <div class="messages">
-        Have notification
+    <div>
+        <div class="cart">
+            Shopping list
+        </div>
     </div>
 </template>
 
@@ -11,7 +13,7 @@
 </script>
 
 <style scoped>
-/* .messages {
+/* .profile {
     display: flex;
     justify-content: center;
     align-items: center;

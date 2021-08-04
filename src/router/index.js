@@ -4,7 +4,7 @@ import Header from '../views/Header'
 import Itembar from '@/views/Bar'
 import Profile from '@/views/Profile'
 import Point from '@/views/Point'
-import Mailbox from '@/views/Mailbox'
+import Cart from '@/views/Cart'
 import Signup from '@/views/SignUp'
 
 Vue.use(VueRouter)
@@ -27,18 +27,18 @@ const routes = [
     component: Profile
   },
   {
+    path: '/cart',
+    name: 'Cart',
+    component: Cart
+  },
+  {
     path: '/point',
     name: 'Point',
     component: Point
   },
   {
-    path: '/mailbox',
-    name: 'mailbox',
-    component: Mailbox
-  },
-  {
     path: '/signup',
-    name: 'signup',
+    name: 'Signup',
     component: Signup
   },
   

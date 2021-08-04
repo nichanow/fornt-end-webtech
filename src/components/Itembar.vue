@@ -1,110 +1,159 @@
 <template>
-    
-        
-        <div class="sidebar">
-            <div class="title">
-                OPTION
+    <div>
+        <div class="logohead">
+            <h1 class="aa">CS SHOP</h1>
+        </div>
+        <div class="topnav">
+            <div class = "headbar">
+                <!-- <router-link to="/point" active-class="active" tag="button" exact class="side-btn"> -->
+                    <div>
+                      <!-- <b-icon class="icon" stacked icon="camera" variant="info"></b-icon> -->
+                      <button class="mb-2" @click="Point">POINT</button>
+                    </div>
+                <!-- </router-link> -->
+                <!-- <router-link to="/cart" active-class="active" tag="button" exact class="side-btn"> -->
+                    <div><button @click="Cart">SHOPPING BAG</button></div>
+                <!-- </router-link> -->
+                <!-- <router-link to="/profile" active-class="active" tag="button" exact class="side-btn"> -->
+                    <div><button @click="Profile">PROFILE</button></div>
+                <!-- </router-link> -->
+                <!-- <router-link to="/signup" active-class="active" tag="button" exact class="side-btn"> -->
+                    <div><button @click="Signup">SIGN-UP</button></div>
+                <!-- </router-link> -->
             </div>
-            <div class="menu-items">
-                <router-link to="/point" active-class="active" tag="button" exact class="side-btn">
-                    <div class="link-container">
-                        POINT
-                    </div>
-                </router-link>
-                <router-link to="/mailbox" active-class="active" tag="button" exact class="side-btn">
-                    <div class="link-container">
-                        Messages
-                    </div>
-                </router-link>
-                <router-link to="/profile" active-class="active" tag="button" exact class="side-btn">
-                    <div class="link-container">
-                        Profile
-                    </div>
-                </router-link>
-                <router-link to="/signup" active-class="active" tag="button" exact class="side-btn">
-                    <div class="link-container">
-                        SIGN-UP
-                    </div>
-                </router-link>
-                
+            <div class="login-container">
+                <form action="/action_page.php">
+                    <input class="username" type="text" placeholder="Username" name="username">
+                    <input class="password" type="password" placeholder="Password" name="psw">
+                    <button type="submit">Login</button>
+                </form>
             </div>
         </div>
+    </div>
         
 </template>
 
 <script>
 export default {
-    
+    methods: {
+      Point() {
+        this.$router.push('/Point')
+      },
+      Cart() {
+        this.$router.push('/cart')
+      },
+      Profile() {
+        this.$router.push('/Profile')
+      },
+      Signup() {
+        this.$router.push('/SignUp')
+      },
+    }
 }
 </script>
 
 <style scoped>
-.sidebar{
-    position: relative;
+
+* {box-sizing: border-box;}
+
+.headbar {
+  overflow: hidden;
+  background-color: #000000;
+ 
 }
 
-/* .title {
-    color: white;
-    font-size: 24px;
-    margin-top: 10px;
+.headbar .icon{
+  width: 20px;
+  height: 20px;
+  position: relative;
+    left: 100px;
 }
-.menu-items {
-    display: flex;
-    flex-direction: column;
-    margin-top: 40px;
-    margin-left: 6px;
+.headbar button {
+  float: left;
+  display: block;
+  color: rgb(255, 255, 255);
+  background: none;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
 }
-.menu-items > * {
-    margin-top: 60px;
+
+.headbar button:hover {
+  background-color: rgb(248, 248, 248);
+  color: rgb(0, 0, 0);
 }
-.side-btn {
-    border: none;
-    padding: 16px 0px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 500;
-    color: white;
-    background-color: transparent;
+
+.headbar .login-container {
+  float: right;
 }
-.side-btn:focus {
-    outline: none;
+
+
+.headbar input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+  width: 150px; 
 }
-.side-btn.active {
+
+
+.headbar .login-container button {
+  float: right;
+  padding: 6px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: rgb(0, 0, 0);
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.headbar .login-container button:hover {
+  background: rgb(219, 9, 9);
+}
+
+@media screen and (max-width: 600px) {
+  .headbar .login-container {
+    float: none;
+  }
+  .headbar input[type=text], .headbar .login-container button {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .headbar input[type=text] {
+    border: 1px solid #ccc;
+  }
+}
+
+.username{
     position: relative;
-    background-color: white;
-    color: teal;
-    font-weight: 600;
-    margin-left: 10px;
-    border-radius: 30px 0 0 30px;
+    right: 15px;
 }
-.side-btn.active::before {
-    top: -30px;
+
+.password{
+    position: relative;
+    right: 5px;
 }
-.side-btn.active::after {
-    bottom: -30px;
+
+.headbar button{
+    position: relative;
+    left: 100px;
 }
-.side-btn.active::before, .side-btn.active::after {
-    position: absolute;
-    content: "";
-    right: 0;
-    height: 30px;
-    width: 30px;
-    background-color: white;
+
+.login-container{
+    position: relative;
+    left: 800px;
+    bottom: 46px;
 }
-.side-btn.active .link-container::before {
-    top: -60px;
+
+.topnav{
+    position: relative;
+    top: 29px;
 }
-.side-btn.active .link-container::after {
-    bottom: -60px;
-    z-index: 99;
-}
-.side-btn.active .link-container::before, .side-btn.active .link-container::after {
-    position: absolute;
-    content: "";
-    right: 0px;
-    height: 60px;
-    width: 60px;
-    border-radius: 50%;
-    background-color: teal;
-} */
+    
 </style>
