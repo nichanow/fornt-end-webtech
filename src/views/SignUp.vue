@@ -1,14 +1,17 @@
 <template>
-    <div>
-        <div class="singup">
-            sign-up
-        </div>
-    </div>
+   <div>
+       <signup-component></signup-component>
+   </div>
+   
 </template>
 
+
 <script>
+import SignupComponent from '@/components/SignUpComponent'
     export default {
-        
+        components:{
+            SignupComponent
+        }
     }
 </script>
 
