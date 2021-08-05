@@ -8,17 +8,31 @@
                 <!-- <router-link to="/point" active-class="active" tag="button" exact class="side-btn"> -->
                     <div>
                       <!-- <b-icon class="icon" stacked icon="camera" variant="info"></b-icon> -->
-                      <button class="mb-2" @click="Point">POINT</button>
+                      <b-button @click="Cart" size="sm" class="mb-2">
+                        <b-icon icon="wallet" aria-hidden="true"></b-icon> Point
+                      </b-button>
                     </div>
                 <!-- </router-link> -->
                 <!-- <router-link to="/cart" active-class="active" tag="button" exact class="side-btn"> -->
-                    <div><button @click="Cart">SHOPPING BAG</button></div>
+                    <div>
+                      <b-button @click="Cart" size="sm" class="mb-2">
+                        <b-icon icon="cart3" aria-hidden="true"></b-icon> SHOPPING BAG
+                      </b-button>
+                    </div>
                 <!-- </router-link> -->
                 <!-- <router-link to="/profile" active-class="active" tag="button" exact class="side-btn"> -->
-                    <div><button @click="Profile">PROFILE</button></div>
+                    <div>
+                      <b-button @click="Cart" size="sm" class="mb-2">
+                        <b-icon icon="file-person" aria-hidden="true"></b-icon> PROFILE
+                      </b-button>
+                    </div>
                 <!-- </router-link> -->
                 <!-- <router-link to="/signup" active-class="active" tag="button" exact class="side-btn"> -->
-                    <div><button @click="Signup">SIGN-UP</button></div>
+                    <div>
+                      <b-button @click="Cart" size="sm" class="mb-2">
+                        <b-icon icon="key" aria-hidden="true"></b-icon> SIGN-UP
+                      </b-button>
+                    </div>
                 <!-- </router-link> -->
             </div>
             <div class="login-container">
@@ -77,6 +91,7 @@ export default {
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
+  border: black;
 }
 
 .headbar button:hover {

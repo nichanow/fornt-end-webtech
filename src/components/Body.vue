@@ -150,7 +150,6 @@ export default {
 
 <style >
 
-
   footer{
     height: 400px;
   }
@@ -166,7 +165,7 @@ export default {
     width: 20px;
     position: relative;
     bottom: 21px;
-  }  */
+  }  
 
   .shop{
     display: grid;
@@ -181,6 +180,7 @@ export default {
     position: relative;
     bottom: 300px;
   }
+
   .gucci img{
     width: 500px;
     height: 500px;
@@ -189,9 +189,6 @@ export default {
   .firstslide{
     font-size: 28px;
   }
-
-  
-
 
 </style>
 
