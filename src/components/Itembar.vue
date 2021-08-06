@@ -4,28 +4,29 @@
             <h1 class="aa">CS SHOP</h1>
         </div>
         <div class="topnav">
+          
             <div class = "headbar">
                 <!-- <router-link to="/point" active-class="active" tag="button" exact class="side-btn"> -->
-                    <div>
-                      <!-- <b-icon class="icon" stacked icon="camera" variant="info"></b-icon> -->
+                    <!-- <div>
+                      
                       <b-button @click="Point" size="sm" class="mb-2">
                         <b-icon icon="wallet" aria-hidden="true"></b-icon> Point
                       </b-button>
-                    </div>
+                    </div> -->
                 <!-- </router-link> -->
                 <!-- <router-link to="/cart" active-class="active" tag="button" exact class="side-btn"> -->
-                    <div>
+                    <!-- <div>
                       <b-button @click="Cart" size="sm" class="mb-2">
                         <b-icon icon="cart3" aria-hidden="true"></b-icon> SHOPPING BAG
                       </b-button>
-                    </div>
+                    </div> -->
                 <!-- </router-link> -->
                 <!-- <router-link to="/profile" active-class="active" tag="button" exact class="side-btn"> -->
-                    <div>
+                    <!-- <div>
                       <b-button @click="Profile" size="sm" class="mb-2">
                         <b-icon icon="file-person" aria-hidden="true"></b-icon> PROFILE
                       </b-button>
-                    </div>
+                    </div> -->
                 <!-- </router-link> -->
                 <!-- <router-link to="/signup" active-class="active" tag="button" exact class="side-btn"> -->
                     <div>
@@ -50,15 +51,15 @@
 <script>
 export default {
     methods: {
-      Point() {
-        this.$router.push('/Point')
-      },
-      Cart() {
-        this.$router.push('/cart')
-      },
-      Profile() {
-        this.$router.push('/Profile')
-      },
+      // Point() {
+      //   this.$router.push('/Point')
+      // },
+      // Cart() {
+      //   this.$router.push('/cart')
+      // },
+      // Profile() {
+      //   this.$router.push('/Profile')
+      // },
       Signup() {
         this.$router.push('/SignUp')
       },
@@ -157,12 +158,13 @@ export default {
 
 .headbar button{
     position: relative;
-    left: 100px;
+    top: 5px;
+    left: 1950px;
 }
 
 .login-container{
     position: relative;
-    left: 800px;
+    left: 630px;
     bottom: 46px;
 }
 

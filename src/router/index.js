@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Header from '../views/Header'
 import Itembar from '@/views/Bar'
 import Profile from '@/views/Profile'
-import Point from '@/views/Point'
+// import Point from '@/views/Point'
 import Cart from '@/views/Cart'
 import Signup from '@/views/SignUp'
 import Admin from '@/views/Admin'
@@ -33,11 +33,11 @@ const routes = [
     name: 'Cart',
     component: Cart
   },
-  {
-    path: '/point',
-    name: 'Point',
-    component: Point
-  },
+  // {
+  //   path: '/Point',
+  //   name: 'Point',
+  //   component: Point
+  // },
   {
     path: '/signup',
     name: 'Signup',
@@ -48,6 +48,7 @@ const routes = [
     name: 'Admin',
     component: Admin
   },
+ 
   
 ]
 

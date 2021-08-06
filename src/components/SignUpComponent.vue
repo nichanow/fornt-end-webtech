@@ -7,9 +7,9 @@
     <body>
         <div class="topnav">
             <router-link to="/">CS SHOP</router-link> 
-            <router-link to="/Point">POINT</router-link> 
+            <!-- <router-link to="/Point">POINT</router-link> 
             <router-link to="/cart">SHOPPING BAG</router-link> 
-            <router-link to="/Profile">PROFILE</router-link> 
+            <router-link to="/Profile">PROFILE</router-link>  -->
             <router-link class="active" to="/SignUp">SIGN-UP</router-link> 
         </div>
     </body>
