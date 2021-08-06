@@ -1,16 +1,16 @@
 <template>
    <div>
-       <signup-component></signup-component>
+       <admin></admin>
    </div>
    
 </template>
 
 
 <script>
-import SignupComponent from '@/components/SignUpComponent'
+import Admin from '@/components/Admin'
     export default {
         components:{
-            SignupComponent
+            Admin
         }
     }
 </script>

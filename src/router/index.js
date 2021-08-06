@@ -6,6 +6,8 @@ import Profile from '@/views/Profile'
 import Point from '@/views/Point'
 import Cart from '@/views/Cart'
 import Signup from '@/views/SignUp'
+import Admin from '@/views/Admin'
+
 
 Vue.use(VueRouter)
 
@@ -40,6 +42,11 @@ const routes = [
     path: '/signup',
     name: 'Signup',
     component: Signup
+  },
+  {
+    path: '/admin',
+    name: 'Admin',
+    component: Admin
   },
   
 ]

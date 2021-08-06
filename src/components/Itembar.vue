@@ -8,7 +8,7 @@
                 <!-- <router-link to="/point" active-class="active" tag="button" exact class="side-btn"> -->
                     <div>
                       <!-- <b-icon class="icon" stacked icon="camera" variant="info"></b-icon> -->
-                      <b-button @click="Cart" size="sm" class="mb-2">
+                      <b-button @click="Point" size="sm" class="mb-2">
                         <b-icon icon="wallet" aria-hidden="true"></b-icon> Point
                       </b-button>
                     </div>
@@ -22,14 +22,14 @@
                 <!-- </router-link> -->
                 <!-- <router-link to="/profile" active-class="active" tag="button" exact class="side-btn"> -->
                     <div>
-                      <b-button @click="Cart" size="sm" class="mb-2">
+                      <b-button @click="Profile" size="sm" class="mb-2">
                         <b-icon icon="file-person" aria-hidden="true"></b-icon> PROFILE
                       </b-button>
                     </div>
                 <!-- </router-link> -->
                 <!-- <router-link to="/signup" active-class="active" tag="button" exact class="side-btn"> -->
                     <div>
-                      <b-button @click="Cart" size="sm" class="mb-2">
+                      <b-button @click="Signup" size="sm" class="mb-2">
                         <b-icon icon="key" aria-hidden="true"></b-icon> SIGN-UP
                       </b-button>
                     </div>
