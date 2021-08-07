@@ -1,5 +1,8 @@
 <template>
   <div>
+   <button v-if="num_pages === 0" @click="history" class="history">History Point</button>
+   <div v-if="num_pages === 0">
+    <div class="totalPoint"> point</div>
       <div class="table1">
             <h1>daily reward</h1>
             <table>
@@ -91,17 +94,50 @@
               </div>
 
             </div> -->
-          
+            
         </div>
+        </div>
+
+        <div v-if="num_pages === 1"><used-points-history></used-points-history></div>
   </div>
 </template>
 
 <script>
+import UsedPointsHistory from '@/components/UsedPointsHistory'
 export default {
-
+  data(){
+        return{
+            num_pages:0
+        }
+    },
+  components: { UsedPointsHistory },
+  methods:{
+    history(){
+      this.num_pages = 1
+    },
+  }
 }
 </script>
 
-<style>
+<style scoped>
+.totalPoint{
+    font-family: 'Fira Code', 'Fira Sans', sans-serif;
+    background-color: #388edd;
+    color: #FFF;
+    font-size: 20px;
+    font-weight: 900;
+    padding: 5px 10px;
+    width: 8%;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: inset 0px 0px 6px rgba(0, 0, 0, 0.25);
+    text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+}
+
+table{
+    margin-left: auto;
+    margin-right: auto;
+}
+
 
 </style>

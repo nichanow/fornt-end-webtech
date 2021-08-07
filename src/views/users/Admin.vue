@@ -20,12 +20,12 @@
     <div v-if="num_pages === 2">
         <prize></prize>
     </div>
-    <button v-if="num_pages !== 0" @click="back">back</button>
+    <button v-if="num_pages !== 0" @click="back" class="back">back</button>
   </div>
 </template>
 
 <script>
-import LeaderBoard from '@/components/LeaderBoard'
+import LeaderBoard from '@/components/Leaderboard'
 import Prize from '@/components/Prize'
 export default {
     data(){
@@ -79,4 +79,8 @@ export default {
       top: 180px;
       right: 217px;
   }
+.back{
+    position: relative;
+    left: 600px;
+}
 </style>

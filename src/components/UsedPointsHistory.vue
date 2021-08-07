@@ -42,6 +42,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+table{
+    margin-left: auto;
+    margin-right: auto;
+}
 </style>

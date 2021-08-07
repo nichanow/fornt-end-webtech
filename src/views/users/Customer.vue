@@ -18,8 +18,10 @@
     <div v-if="num_pages === 3">
         <profile></profile>
     </div>
-    <button v-if="num_pages !== 0" @click="back">back</button>
+    
+    <button v-if="num_pages !== 0" @click="back" class="back">back</button>
   </div>
+
 </template>
 
 <script>
@@ -27,6 +29,7 @@ import Homepage from '@/components/Homepage'
 import GetPointsHistory from '@/components/GetPointsHistory'
 import Reward from '@/components/Reward'
 import Profile from '@/components/Profile'
+
 export default {
     data(){
         return{
@@ -37,7 +40,8 @@ export default {
         Homepage,
         GetPointsHistory,
         Reward,
-        Profile
+        Profile,
+        
     },
     methods:{
         historyGet(){
@@ -54,7 +58,14 @@ export default {
         },
         logout(){
             this.$router.push('/')
-        }
+        },
+        
     }
 }
 </script>
+
+<style scoped>
+.back{
+    margin-left: 150px;
+}
+</style>
