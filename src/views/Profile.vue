@@ -1,14 +1,16 @@
 <template>
     <div>
-        <div class="profile">
-            Profile
-        </div>
+        <profile-component></profile-component>
     </div>
 </template>
 
 <script>
+import ProfileComponent from '@/components/ProfileComponent'
+
     export default {
-        
+        components:{
+            ProfileComponent          
+        }
     }
 </script>
 

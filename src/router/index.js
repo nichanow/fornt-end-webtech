@@ -3,11 +3,12 @@ import VueRouter from 'vue-router'
 import Header from '../views/Header'
 import Itembar from '@/views/Bar'
 import Profile from '@/views/Profile'
-// import Point from '@/views/Point'
-import Cart from '@/views/Cart'
+import Point from '@/views/Point'
+import UserHistory from '@/views/UserHistory'
 import Signup from '@/views/SignUp'
 import Admin from '@/views/Admin'
-
+import Prize from '@/views/Prize'
+import Leaderboard from '@/views/Leaderboard'
 
 Vue.use(VueRouter)
 
@@ -17,6 +18,16 @@ const routes = [
     path: '/',
     name: 'Header',
     component: Header
+  },
+  {
+    path: '/prize',
+    name: 'Prize',
+    component: Prize
+  },
+  {
+    path: '/leaderboard',
+    name: 'Leaderboard',
+    component: Leaderboard
   },
   {
     path: '/itembar',
@@ -29,15 +40,15 @@ const routes = [
     component: Profile
   },
   {
-    path: '/cart',
-    name: 'Cart',
-    component: Cart
+    path: '/userHistory',
+    name: 'UserHistory',
+    component: UserHistory
   },
-  // {
-  //   path: '/Point',
-  //   name: 'Point',
-  //   component: Point
-  // },
+  {
+    path: '/Point',
+    name: 'Point',
+    component: Point
+  },
   {
     path: '/signup',
     name: 'Signup',

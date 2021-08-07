@@ -56,7 +56,7 @@
 
     </div>
 
-    <div class="footer">
+    <footer>
         <p>
             about us <br>
             <!-- ong007 <br>
@@ -68,7 +68,7 @@
         </p>
         
         
-    </div>
+    </footer>
  
     
 </div>
@@ -78,7 +78,6 @@
 
 <script>
 //จำลองเก็บข้อมูล register
-import SignupStock from '@/store/stock'
 
 export default {
      data() {
@@ -164,16 +163,19 @@ export default {
   color: rgb(255, 255, 255);
 }
 .body{
+    
     padding: 40px 90px 90px 90px;
     background-color: rgb(202, 202, 202);
 }
 .body h3{
-    padding-bottom: 30px;
+    padding-top: 30px;
 }
 
 .box{
-    width: 32%;
-    margin: auto;
+    width: 35%;
+    margin-top: 30px;
+    margin-right: auto;
+    margin-left: auto;
     padding: auto;
     text-align: left
 }
@@ -194,10 +196,10 @@ input{
 .logohead{
     // background-color: black;
     // color: white;
-    padding-bottom: 30px;
+    padding-bottom: 10px;
    
 }
-.footer{
+footer{
     // position: fixed;
     // left: 0;
     // bottom: 0;
@@ -207,7 +209,8 @@ input{
     // background-color: rgb(0, 0, 0);
     // color: white;
     // text-align: center;
-    padding-bottom: 10px;
+    height: 110px;
+    // padding-bottom: 10px;
     font-weight: 300;
     font-style: normal;
     background: #1b1b1b;
@@ -217,15 +220,16 @@ input{
     
 
 }
-.footer p{
+footer p{
     text-align: left;
     margin-left: 20px;
     padding-top: 10px;
 }
 
-.footer a{
+footer a{
     color: rgb(197, 197, 197);
 }
+
 
 
 </style>

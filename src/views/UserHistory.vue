@@ -1,15 +1,17 @@
 <template>
     <div>
-        <div class="cart">
-            Shopping list
-        </div>
+        <user-history></user-history>
     </div>
 </template>
 
 <script>
-    export default {
-        
+import UserHistory from '@/components/UserHistory'
+export default {
+  components:{
+       UserHistory
     }
+}    
+   
 </script>
 
 <style scoped>

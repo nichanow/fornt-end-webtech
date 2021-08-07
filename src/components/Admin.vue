@@ -13,12 +13,12 @@
         <div class="list_option">
             <div class="option">
                 <img  src='../assets/coin.jpg' >
-                <button type="button" class="btn btn-outline-secondary">LEADERBOARD</button>
+                <button @click="Leaderboard" type="button" class="btn btn-outline-secondary">LEADERBOARD</button>
             </div>
 
             <div class="option">
                 <img  src='../assets/prize.jpg' >
-                <button type="button" class="btn btn-outline-success">PRIZE</button>
+                <button @click="Prize" type="button" class="btn btn-outline-success">PRIZE</button>
             </div>
         </div>
 
@@ -26,10 +26,17 @@
 </template>
 
 <script>
+import LeaderboardVue from '../views/Leaderboard.vue'
 export default {
     methods: {
       Logout() {
         this.$router.push('/')
+      },
+      Leaderboard(){
+          this.$router.push('/leaderboard')
+      },
+      Prize(){
+          this.$router.push('/prize')
       }
     }
 }
