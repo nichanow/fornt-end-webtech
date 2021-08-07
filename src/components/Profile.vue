@@ -1,6 +1,6 @@
 <template>
   <div>
-    Leader Board
+      Profile
   </div>
 </template>
 

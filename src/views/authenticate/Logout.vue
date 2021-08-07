@@ -1,12 +1,12 @@
 <template>
-  <div>
-    Leader Board
-  </div>
+  
 </template>
 
 <script>
 export default {
-
+    mounted(){ 
+        this.$router.push('/home')
+    }
 }
 </script>
 

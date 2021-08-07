@@ -1,66 +1,46 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Header from '../views/Header'
-import Itembar from '@/views/Bar'
-import Profile from '@/views/Profile'
-import Point from '@/views/Point'
-import UserHistory from '@/views/UserHistory'
-import Signup from '@/views/SignUp'
-import Admin from '@/views/Admin'
-import Prize from '@/views/Prize'
-import Leaderboard from '@/views/Leaderboard'
+import Home from '../views/Home.vue'
+import Login from '@/views/authenticate/Login'
+import Logout from '@/views/authenticate/Logout'
+import Register from '@/views/authenticate/Register'
+import Admin from '@/views/users/Admin'
+import Customer from '@/views/users/Customer'
 
 Vue.use(VueRouter)
 
 const routes = [
-
   {
     path: '/',
-    name: 'Header',
-    component: Header
+    name: 'Home',
+    component: Home
   },
   {
-    path: '/prize',
-    name: 'Prize',
-    component: Prize
+    path: '/login',
+    name: 'Login',
+    component: Login
   },
   {
-    path: '/leaderboard',
-    name: 'Leaderboard',
-    component: Leaderboard
+    path: '/register',
+    name: 'Register',
+    component: Register
   },
   {
-    path: '/itembar',
-    name: 'Bar',
-    component: Itembar
-  },
-  {
-    path: '/profile',
-    name: 'Profile',
-    component: Profile
-  },
-  {
-    path: '/userHistory',
-    name: 'UserHistory',
-    component: UserHistory
-  },
-  {
-    path: '/Point',
-    name: 'Point',
-    component: Point
-  },
-  {
-    path: '/signup',
-    name: 'Signup',
-    component: Signup
+    path: '/logout',
+    name: 'Logout',
+    component: Logout
   },
   {
     path: '/admin',
     name: 'Admin',
     component: Admin
   },
- 
-  
+  {
+    path: '/customer',
+    name: 'Customer',
+    component: Customer
+  },
+
 ]
 
 const router = new VueRouter({
