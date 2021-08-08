@@ -106,7 +106,9 @@
 import UsedPointsHistory from '@/components/UsedPointsHistory'
 export default {
   data(){
+  
         return{
+            stocks: [],
             num_pages:0
         }
     },

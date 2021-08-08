@@ -27,6 +27,7 @@
                         
                     </tr>
                     <!-- <tr v-for="(expense, index) in expense" :key="index" class = "expense"> -->
+                    
 
                 </tbody>
             </table>
@@ -37,8 +38,13 @@
 </template>
 
 <script>
-export default {
 
+export default {
+    data(){
+         return {
+             historyPoint: []
+             }
+    }
 }
 </script>
 
