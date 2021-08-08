@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import AuthUser from "@/store/AuthUser"
 export default {
     data(){
         return{
@@ -38,7 +39,17 @@ export default {
     },
     methods:{
         async register(){
-           
+            let res = await AuthUser.dispatch('register', this.form)
+            if(res.success){
+                // this.$swal("Register success", `Welcom ${res.user.username}`,"success")
+                if(res.user.user_data.level === "admin"){
+                    this.$router.push('/admin') 
+                }else{
+                    this.$router.push('/customer') 
+                }
+            }else{
+                // this.$swal("Register failed", res.message,"error")
+            }
         },
         toHome(){
             this.$router.push('/')

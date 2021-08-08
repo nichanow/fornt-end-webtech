@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import AuthUser from "@/store/AuthUser"
 import Homepage from '@/components/Homepage'
 import GetPointsHistory from '@/components/GetPointsHistory'
 import Reward from '@/components/Reward'
@@ -43,6 +44,16 @@ export default {
         Profile,
         
     },
+    mounted(){ // ใช้ดักว่าถ้าไม่ได้ log in ห้ามเข้า
+        if(!this.isAuthen()){
+            // this.$swal("Restricted Area", "You have no permission", "warning")
+            alert("Restricted Area")
+            this.$router.push('/')
+        }else if(AuthUser.getters.user.user_data.level === "admin"){
+            alert("You is not customer")
+            this.$router.push('/admin')
+        }
+    },
     methods:{
         historyGet(){
             this.num_pages = 1
@@ -57,9 +68,12 @@ export default {
             this.num_pages = 0
         },
         logout(){
+            AuthUser.dispatch('logout')
             this.$router.push('/')
         },
-        
+        isAuthen(){
+            return AuthUser.getters.isAuthen
+        } 
     }
 }
 </script>

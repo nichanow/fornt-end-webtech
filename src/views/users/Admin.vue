@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import AuthUser from "@/store/AuthUser"
 import LeaderBoard from '@/components/Leaderboard'
 import Prize from '@/components/Prize'
 export default {
@@ -37,6 +38,16 @@ export default {
         LeaderBoard,
         Prize
     },
+    mounted(){ // ใช้ดักว่าถ้าไม่ได้ log in ห้ามเข้า
+        if(!this.isAuthen()){
+            // this.$swal("Restricted Area", "You have no permission", "warning")
+            alert("Restricted Area")
+            this.$router.push('/')
+        }else if(AuthUser.getters.user.user_data.level === "normal"){
+            alert("You is not admin")
+            this.$router.push('/customer')
+        }   
+    },
     methods:{
         leaderBoard(){
             this.num_pages = 1
@@ -48,8 +59,12 @@ export default {
             this.num_pages = 0
         },
         logout(){
+            AuthUser.dispatch('logout')
             this.$router.push('/')
-        }
+        },
+        isAuthen(){
+            return AuthUser.getters.isAuthen
+        } 
     }
 
 }

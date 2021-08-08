@@ -53,8 +53,9 @@
                     <tr>
                         <th>No.</th>
                         <th>Item</th>
-                        <th>Name</th>
+                        <th>Image</th>
                         <th>Point</th>
+                        <th>Total</th>
                         <th>Exchange</th>
                         
                         
@@ -63,12 +64,13 @@
 
                 <tbody>
                     <!-- <tr v-for="(income, index) in income" :key="index" class="income"> -->
-                    <tr v-for="(stock, index) in stocks" :key="index" class="item">
+                    <tr v-for="(stock, index) in stockItems" :key="index" class="item">
                       <!-- <img: src="stock.picture">  -->
-                        <td>{{stock.number}}</td>
+                      <td>{{ index + 1 }}</td>
+                        <td>{{stock.item}}</td>
                         <td><img :src="'../assets/' + stock.picture"></td>
-                        <td>{{stock.name}}</td>
-                        <td>{{stock.point}}</td>
+                        <td>{{stock.points}}</td>
+                        <td>{{stock.amounts}}</td> 
                         <td><button @click="addStock">Exchange</button></td>
                   
                     </tr>
@@ -104,16 +106,24 @@
 
 <script>
 import UsedPointsHistory from '@/components/UsedPointsHistory'
+import StockItemsApi from '@/store/StockItemsApi'
+// import AuthUser from '@/store/AuthUser'
 export default {
   data(){
   
         return{
-            stocks: [],
-            num_pages:0
+            num_pages:0,
+            stockItems: []
         }
     },
-  components: { UsedPointsHistory },
-  methods:{
+    async created(){
+        await StockItemsApi.dispatch('fetchData')
+        this.stockItems = StockItemsApi.getters.data
+        // let user = AuthUser.getters.user.user_data
+        // this.historyPoint = user.points_usage_history_tables
+    },
+    components: { UsedPointsHistory },
+    methods:{
     history(){
       this.num_pages = 1
     },

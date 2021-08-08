@@ -5,7 +5,7 @@
       <form @submit.prevent="login"> 
           <div>
               <label for="emailOrUsername">Username </label>
-              <input v-model="form.emailOrUsername" type="text" placeholder="email or Username " autocomplete="off">
+              <input v-model="form.email" type="text" placeholder="email or Username " autocomplete="off">
           </div>
           <div>
               <label for="password">Password </label>
@@ -19,18 +19,29 @@
 </template>
 
 <script>
+import AuthUser from "@/store/AuthUser"
 export default {
     data(){
         return{
             form:{ 
-                emailOrUsername:"",
+                email:"",
                 password:""
             }
         }
     },
     methods:{
         async login(){
-            
+            let res = await AuthUser.dispatch('login', this.form)
+            if(res.success){
+                // this.$swal("Login Success", `Wellcom ${res.user.username}`, "success")
+                if(res.user.user_data.level === "admin"){
+                    this.$router.push('/admin') 
+                }else{
+                    this.$router.push('/customer') 
+                }
+            }else{
+                // this.$swal("Login Failed", res.message, "error") 
+            }
         },
         toHome(){
             this.$router.push('/')
