@@ -32,6 +32,7 @@ export default {
     methods:{
         async login(){
             let res = await AuthUser.dispatch('login', this.form)
+            
             if(res.success){
                 // this.$swal("Login Success", `Wellcom ${res.user.username}`, "success")
                 if(res.user.user_data.level === "admin"){
