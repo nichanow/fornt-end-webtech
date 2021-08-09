@@ -90,61 +90,62 @@
       <div class = "shop">
         <div class = "gucci">
           <img  src='../assets/shirt1.jpg' >
-          <h1>RED CAT PATCH SHIRT</h1> 
+          <h1 class="name">RED CAT PATCH SHIRT</h1> 
           <h4>1,090 BAHT    :    30POINTS</h4>
           <button>ADD TO SHOPPING BAG</button>
         </div> 
 
         <div class = "gucci">
           <img  src='../assets/shirt2.jpg' >
-          <h1>BLUE BOXY SHIRT</h1> 
+          <h1 class="name">BLUE BOXY SHIRT</h1> 
           <h4>1,020 BAHT    :    25POINTS</h4>
           <button>ADD TO SHOPPING BAG</button>
         </div> 
 
         <div class = "gucci">
           <img  src='../assets/guccishort1.jpg' >
-          <h1>BLACK DUCHESS SHORTS</h1>
+          <h1 class="name">BLACK DUCHESS SHORTS</h1>
           <h4>750 BAHT    :    15POINTS</h4> 
           <button>ADD TO SHOPPING BAG</button>
         </div>
 
         <div class = "gucci">
           <img  src='../assets/guccishort2.jpg' >
-          <h1>BLUE WOOL SHORTS</h1> 
+          <h1 class="name">BLUE WOOL SHORTS</h1> 
           <h4>750 BAHT    :    15POINTS</h4>
           <button>ADD TO SHOPPING BAG</button>
         </div> 
 
         <div class = "gucci">
           <img  src='../assets/shoe1.jpg' >
-          <h1>BLACK TENNIS SNEAKERS</h1> 
+          <h1 class="name">MICKEY MOUSE SNEAKERS</h1> 
           <h4>3,590 BAHT    :    50POINTS</h4> 
           <button>ADD TO SHOPPING BAG</button>
         </div> 
 
         <div class = "gucci">
           <img  src='../assets/shoe2.jpg' >
-          <h1>BROWN WEB LOAFERS</h1>
+          <h1 class="name">WHITE BOOTS</h1>
           <h4>6,000 BAHT    :    65POINTS</h4> 
           <button>ADD TO SHOPPING BAG</button>
         </div> 
 
         <div class = "gucci">
           <img  src='../assets/bag1.jpg' >
-          <h1>WHITE G-PORCH WALLET</h1> 
+          <h1 class="name">WHITE G-PORCH WALLET</h1> 
           <h4>10,900 BAHT    :    90POINTS</h4> 
           <button>ADD TO SHOPPING BAG</button>
         </div> 
 
         <div class = "gucci">
           <img  src='../assets/bag2.jpg' >
-          <h1>BLACK G-PORCH WALLET</h1> 
+          <h1 class="name">BLACK G-PORCH WALLET</h1> 
           <h4>11,000 BAHT    :    90POINTS</h4> 
           <button>ADD TO SHOPPING BAG</button>
         </div>
 
       </div>
+      <footer class="bottomfooter"></footer>
   </div>
 </template>
 
@@ -156,7 +157,7 @@ export default {
 
 <style>
  footer{
-    height: 400px;
+    height: 50px;
  }
 
  .shop{
@@ -166,8 +167,26 @@ export default {
 
   .gucci{
     width: 500px;
-    height: 700px;
+    height: 650px;
     margin-left: auto;
     margin-right: auto;
+
+    
   }
+
+  .name{
+      margin-top: 30px;
+       font-size: 30px;
+    }
+
+  .footerpic{
+    height: 20px;
+  }
+
+  .bottomfooter{
+    background-color: black;
+    height: 50px;
+  }
+
+
 </style>

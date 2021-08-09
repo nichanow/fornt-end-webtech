@@ -1,13 +1,20 @@
 <template>
   <div >
-      <button @click="logout">logout</button>
+      <h1>CS SHOP</h1>
+        <div class="topnav">
+            <div class = "headbar">
+
+                    <button @click="logout">LOGOUT</button>
+                    <button @click="historyGet" type="button" >Receive Point</button>
+                    <button @click="reward" type="button" >Reward</button>
+                    <button @click="profile" type="button" >Profile</button>
+            </div>
+         </div>
+       
+
+      
       <div v-if="num_pages === 0" >
-        <div >
-            <button @click="historyGet" type="button" >historyGet</button>
-            <button @click="reward" type="button" >Reward</button>
-            <button @click="profile" type="button" >profile</button>
-            <homepage></homepage>
-        </div>        
+        <homepage></homepage>       
       </div>
     <div v-if="num_pages === 1">
         <get-points-history></get-points-history>
@@ -79,7 +86,42 @@ export default {
 </script>
 
 <style scoped>
-.back{
+/* .back{
     margin-left: 150px;
+} */
+h1{
+  margin-bottom: 50px;
+}
+.headbar {
+  overflow: hidden;
+  background-color: #000000;
+ 
+}
+
+.headbar .icon{
+  width: 20px;
+  height: 20px;
+  position: relative;
+    left: 100px;
+}
+.headbar button {
+  float: left;
+  display: block;
+  color: rgb(255, 255, 255);
+  background: none;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  border: black;
+}
+
+.headbar button:hover {
+  background-color: rgb(248, 248, 248);
+  color: rgb(0, 0, 0);
+}
+
+.headbar button.active{
+  background-color:rgb(134, 102, 102);
 }
 </style>

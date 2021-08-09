@@ -2,20 +2,30 @@
   <div>
     <h1>Select Period</h1>
     <div class="time">
-      
-      <div class="start">
-        <label for="startDate">Start Date</label>
-        <input type="date">
-      </div>
+      <table class="time1">
+            <thead>
+                <tr>
+                <th>Start Date</th>
+                <th>End Date</th>
+              
+                </tr>
+            </thead>
+            <tbody>
+                <!-- <tr v-for="(income, index) in income" :key="index" class="income"> -->
+                <tr>
+                    <td><input type="date"></td>
+                    <td><input type="date"></td>
+                   
+                </tr>
+                <!-- <tr v-for="(expense, index) in expense" :key="index" class = "expense"> -->
+            
+            </tbody>
+        </table>
 
-      <div class="end">
-        <label for="endDate">End Date</label>
-        <input type="date">
-      </div>
     </div>
     
-    <div class="table1">
-        <table>
+    <div>
+        <table class="table2">
             <thead>
                 <tr>
                 <th>Rank</th>
@@ -73,12 +83,74 @@ export default {
 </script>
 
 <style scoped>
-.time{
-  display: grid;
-  grid-template-columns:1fr 1fr;
+
+*{
+    margin: 0;
+    padding: 0;
+    outline: 0;
 }
-table{
-  margin-left: auto;
-  margin-right: auto;
+
+.table2{
+    margin-top: 200px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-radius: 12px 12px 0 0;
+    overflow: hidden;
+    box-shadow: 0 12px 5px rgba(32, 32, 32, .3);
+    position: absolute;
+    /* z-index: 2; */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    background: white;
+    text-align: center;
 }
+.table2 th{
+    background: #196b39;
+    color: white;
+    text-transform: uppercase;
+}
+
+.table2 th, .table2 td{
+    padding: 10px 15px;
+
+}
+
+
+.time1{
+    /* margin-bottom: 600px; */
+    
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-radius: 12px 12px 0 0;
+    overflow: hidden;
+    box-shadow: 0 12px 5px rgba(32, 32, 32, .3);
+    position: absolute;
+    /* z-index: 2; */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    background: white;
+    text-align: center;
+}
+.time1 th{
+    background: #93dfb0;
+    color: rgb(6, 88, 61);
+    text-transform: uppercase;
+}
+
+.time1 th, .time1 td{
+    padding: 15px 15px;
+
+}
+.time1 td{
+  
+  width: 30%;
+}
+footer{
+    height: 20px;
+}
+
 </style>

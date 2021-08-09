@@ -1,8 +1,13 @@
 <template>
 <div>
-    <div class="totalPoint"> point</div>
+    
+    
     <div class="table1">
-        <h1>Receive Point</h1>
+        <h3>Receive Point</h3>
+        <div class="totalPoint">total point  510</div>
+        <footer></footer>
+
+        </div>
         <table>
             <thead>
                 <tr>
@@ -29,7 +34,7 @@
             </tbody>
         </table>
 
-    </div>
+   
 </div>
 </template>
 
@@ -39,13 +44,14 @@ import AuthUser from '@/store/AuthUser'
 export default {
     data(){
          return {
-             historyPoint: []
+             historyPoint: {}
              }
     },
     async created(){
         let id = AuthUser.getters.user.id
         await UsersApi.dispatch('fetchData')
         this.historyPoint = UsersApi.getters.data[id-1].history_of_points_earned_tables
+        
         // let user = AuthUser.getters.user.user_data
         // this.historyPoint = user.points_usage_history_tables
     },
@@ -57,20 +63,56 @@ export default {
 
 <style scoped>
 .totalPoint{
+    margin-left: auto;
+    margin-right: auto;
     font-family: 'Fira Code', 'Fira Sans', sans-serif;
     background-color: #388edd;
     color: #FFF;
     font-size: 20px;
     font-weight: 900;
     padding: 5px 10px;
-    width: 8%;
+    width: 15%;
     text-align: center;
     border-radius: 8px;
     box-shadow: inset 0px 0px 6px rgba(0, 0, 0, 0.25);
     text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
 }
-table{
-    margin-left: auto;
-    margin-right: auto;
+*{
+    margin: 0;
+    padding: 0;
+    outline: 0;
 }
+.table1{
+    margin-top: 20px;
+}
+ 
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-radius: 12px 12px 0 0;
+    overflow: hidden;
+    box-shadow: 0 12px 5px rgba(32, 32, 32, .3);
+    position: absolute;
+    /* z-index: 2; */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    background: white;
+    text-align: center;
+}
+th{
+    background: #ba68ca;
+    color: white;
+    text-transform: uppercase;
+}
+
+th, td{
+    padding: 10px 15px;
+
+}
+footer{
+    height: 20px;
+}
+
 </style>

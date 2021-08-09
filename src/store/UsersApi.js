@@ -30,8 +30,9 @@ export default new Vuex.Store({
   },
   actions: {
     async fetchData({ commit }){ 
-        let headers = AuthService.getApiHeader()
+      let headers = AuthService.getApiHeader()
       let res = await Axios.get(api_endpoint+"/users-data",headers) 
+      
       commit('fetch',{res})  
     },
     async addData({commit},payload){
