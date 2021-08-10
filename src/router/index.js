@@ -2,7 +2,6 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '@/views/authenticate/Login'
-import Logout from '@/views/authenticate/Logout'
 import Register from '@/views/authenticate/Register'
 import Admin from '@/views/users/admin/Admin'
 import LeaderBoard from '@/views/users/admin/Leaderboard'
@@ -33,11 +32,7 @@ const routes = [
     name: 'Register',
     component: Register
   },
-  {
-    path: '/logout',
-    name: 'Logout',
-    component: Logout
-  },
+  
   {
     path: '/admin',
     name: 'Admin',

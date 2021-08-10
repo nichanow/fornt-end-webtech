@@ -2,33 +2,32 @@
   <div>
     <head-bar-cus-page></head-bar-cus-page>
     <body>
-      <div class="card">
-        <div class="upper">
+
+      <div class="body">
+        <div class="box">
+          <div>
+            <label class="topic">Fullname :</label>
+            <label for="fullname" class="sentent" >{{ profile.name }}</label> <br>
+          </div>
+        
+          <div>
+            <label class="topic">Email :</label>
+            <label for="email" class="sentent">{{ profile.username.email }}</label> <br>
+          </div>
+
+          <div>
+            <label class="topic">Username :</label>
+            <label for="username" class="sentent">{{ profile.username.username }}</label> <br>
+          </div>
+          
+          <div>
+            <label class="topic">Point :</label>
+            <label for="point" class="sentent">{{ profile.total_points }}</label> <br>
+          </div>
         </div>
-        <div class="lower">
-
-        </div>
-      </div>
-
-      <div>
-        <label>Fullname :</label>
-        <label for="fullname" >{{ profile.name }}</label> <br>
-      </div>
-    
-      <div>
-        <label>Email :</label>
-        <label for="email">{{ profile.username.email }}</label> <br>
-      </div>
-
-      <div>
-        <label>Username :</label>
-        <label for="username">{{ profile.username.username }}</label> <br>
       </div>
       
-      <div>
-        <label>Point :</label>
-        <label for="point">{{ profile.total_points }}</label> <br>
-      </div>
+      
     </body>
 
     
@@ -74,9 +73,36 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.image{
-  width: 30%;
-  height: 50%;
+.box{
+
+    width: 300px;
+    padding: 30px;
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.4);
+    text-align: center;
+}
+.box .topic{
+    color: rgb(246, 250, 209);
+    text-transform: uppercase;
+    font-weight: 700;
+    
+}
+.box .sentent{
+   color: rgb(255, 255, 255);
+    
+    font-weight: 500;
+}
+.body{
+    background-color: rgb(99, 99, 99);
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    height: 701.35px;
+    font-family: sans-serif;
+   
 }
 </style>
 

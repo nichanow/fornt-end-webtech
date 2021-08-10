@@ -119,7 +119,7 @@ h3{
     background-size: cover;
     margin: 0;
     padding: 0;
-    height: 490.55px;
+    height: 701.35px;
     font-family: sans-serif;
     background-color: brown;
 }

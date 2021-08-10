@@ -77,7 +77,7 @@
                     <tr>
                         <th>No.</th>
                         <th>Item</th>
-                        <th>Image</th>
+                        <!-- <th>Image</th> -->
                         <th>Point</th>
                         <th>Total</th>
                         <th>Exchange</th> 
@@ -89,7 +89,7 @@
                       <!-- <img: src="stock.picture">  -->
                       <td>{{ index + 1 }}</td>
                         <td >{{stock.item}}</td>
-                        <td><img :src="'../assets/' + stock.picture"></td>
+                        <!-- <td><img :src="'../assets/' + stock.picture"></td> -->
                         <td>{{stock.points}}</td>
                         <td>{{stock.amounts}}</td> 
                         <td><button @click="exchange(stock)">Exchange</button></td>
@@ -99,6 +99,7 @@
             <footer class="footer2"></footer>
         </div>
         </div>
+        
   </div>
 </template>
 
@@ -135,7 +136,7 @@ export default {
         if(this.user.check_date === day){
             this.check_day = 1
         }
-        this.total_points = AuthUser.getters.user.user_data.total_points
+        this.total_points = UsersApi.getters.data[id-1].total_points
     },
     mounted(){ // ใช้ดักว่าถ้าไม่ได้ log in ห้ามเข้า
         if(!this.isAuthen()){
@@ -184,7 +185,7 @@ export default {
             let payload = {
                 points: 10,
                 prize: 0,
-                type: "daily_reward",
+                type: "daily reward",
                 user: [this.user.id]
             }
             let res = await HistoryApi.dispatch('addDataGet',payload)
@@ -196,7 +197,13 @@ export default {
             this.$router.push('/customer/history-recived-points')
         },
         async exchange(stock){
-            this.user.total_points -= stock.points
+            if(this.user.total_points < stock.points ){
+                this.$swal("Fail","Point is not enough" , "Error")
+            }else if(stock.amounts <= 0){
+                this.$swal("Fail", "Product is not enough","Error")
+            }
+            else{
+                this.user.total_points -= stock.points
             await UsersApi.dispatch('editDataInUser',this.user)
             
             let payload = {
@@ -214,7 +221,9 @@ export default {
             }
             let res = await StockItemsApi.dispatch('editDataInStock',payload)
             this.$swal("Success", "success")
-            this.$router.push('/customer/history-used-points')    
+            this.$router.push('/customer/history-used-points') 
+            }
+               
         },
         isAuthen(){
             return AuthUser.getters.isAuthen
@@ -231,7 +240,7 @@ export default {
 
 }
 .footer2{
-  height: 100px;
+  height: 300px;
 }
 .totalPoint{
     margin-left: auto;
@@ -254,7 +263,7 @@ export default {
 
 
 .daily{
-  margin-top: 110px;
+  margin-top: 70px;
     border-collapse: collapse;
     border-spacing: 0;
     border-radius: 12px 12px 0 0;
@@ -284,7 +293,7 @@ footer{
 }
 
 .hotitem{
-    margin-top: 310px;
+    margin-top: 400px;
     border-collapse: collapse;
     border-spacing: 0;
     border-radius: 12px 12px 0 0;

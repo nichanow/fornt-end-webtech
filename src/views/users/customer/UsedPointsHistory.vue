@@ -7,7 +7,7 @@
                 <thead>
                     <tr>
                         <th>No.</th>
-                        <th>Picture Item</th>
+                        <!-- <th>Picture Item</th> -->
                         <th>Name</th>
                         <th>Point</th>
                         <th>Date</th>
@@ -20,7 +20,7 @@
                     <!-- <tr v-for="(income, index) in income" :key="index" class="income"> -->
                     <tr class="item" v-for="(it, index) in historyPoint" :key="index">
                         <td>{{ index + 1 }}</td>
-                        <td>{{ it.image[0] }}</td>
+                        <!-- <td>{{ it.image[0] }}</td> -->
                         <td>{{ it.item }}</td>
                         <td>{{ it.points_usage }}</td>
                         <td>{{ it.created_at }}</td>

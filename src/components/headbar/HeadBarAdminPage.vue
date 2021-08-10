@@ -19,7 +19,8 @@ export default {
         },
         
         logout(){
-            AuthUser.dispatch('logout')
+             AuthUser.dispatch('logout')
+            this.$swal("Logout Success", "success")
             this.$router.push('/')
         },
         isAuthen(){

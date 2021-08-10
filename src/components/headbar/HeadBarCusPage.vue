@@ -4,6 +4,7 @@
         <div class="topnav">
             <div class = "headbar">
                     <button @click="logout">LOGOUT</button>
+                    <button @click="shop" type="button" >CS SHOP</button>
                     <button @click="historyGet" type="button" >Receive Point</button>
                     <button @click="reward" type="button" >Reward</button>
                     <button @click="profile" type="button" >Profile</button>
@@ -27,9 +28,16 @@ export default {
             this.$router.push('/customer/profile')
         },
         logout(){
+          
             AuthUser.dispatch('logout')
+            this.$swal("Logout Success", "success")
             this.$router.push('/')
+            
+            
         },
+        shop(){
+           this.$router.push('/customer')
+        }
     }
 }
 </script>

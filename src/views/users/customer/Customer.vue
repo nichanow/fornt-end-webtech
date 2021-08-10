@@ -10,6 +10,7 @@
 import HeadBarCusPage from '@/components/headbar/HeadBarCusPage'
 import Homepage from '@/components/Homepage'
 import AuthUser from '@/store/AuthUser'
+ 
 
 export default {
     components:{

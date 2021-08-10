@@ -10,7 +10,7 @@
             <thead>
                 <tr>
                 <th>Start Date</th>
-                <th>End Date</th>
+               
               
                 </tr>
             </thead>
@@ -18,7 +18,7 @@
                 <!-- <tr v-for="(income, index) in income" :key="index" class="income"> -->
                 <tr>
                     <td><input type="date" v-model="date_start"></td>
-                    <td><input type="date"  v-model="date_end"></td>
+                    
                    
                 </tr>
                 <!-- <tr v-for="(expense, index) in expense" :key="index" class = "expense"> -->

@@ -72,12 +72,11 @@ export default new Vuex.Store({
       let url = api_endpoint + "/users-data/" + payload.id
       let body = { 
         age: payload.age,
-        check_date: payload.check_date,
         gender: payload.gender,
-        id: payload.id,
         name: payload.name,
         total_points: payload.total_points,
       }
+      
       let headers = AuthService.getApiHeader()
       let res = await Axios.put(url,body,headers) 
       if(res.status === 200){ 

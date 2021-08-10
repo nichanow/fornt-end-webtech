@@ -52,7 +52,8 @@ export default {
         let id = AuthUser.getters.user.id
         await UsersApi.dispatch('fetchData')
         this.historyPoint = UsersApi.getters.data[id-1].history_of_points_earned_tables
-        this.total_points = AuthUser.getters.user.user_data.total_points
+        this.total_points = UsersApi.getters.data[id-1].total_points
+        
         
     },
     mounted(){ // ใช้ดักว่าถ้าไม่ได้ log in ห้ามเข้า
@@ -101,6 +102,7 @@ export default {
 }
  
 table{
+    margin-top: 50px;
     border-collapse: collapse;
     border-spacing: 0;
     border-radius: 12px 12px 0 0;
