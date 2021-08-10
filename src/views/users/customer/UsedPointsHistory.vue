@@ -1,5 +1,6 @@
 <template>
     <div>
+        <head-bar-cus-page></head-bar-cus-page>
         <div class="table2">
              <h1>Purchase Point</h1>
             <table>
@@ -38,6 +39,7 @@
 </template>
 
 <script>
+import HeadBarCusPage from '@/components/headbar/HeadBarCusPage'
 import UsersApi from '@/store/UsersApi'
 import AuthUser from '@/store/AuthUser'
 export default {
@@ -50,11 +52,23 @@ export default {
         let id = AuthUser.getters.user.id
         await UsersApi.dispatch('fetchData')
         this.historyPoint = UsersApi.getters.data[id-1].points_usage_history_tables
-        // let user = AuthUser.getters.user.user_data
-        // this.historyPoint = user.points_usage_history_tables
+    },
+    mounted(){ // ใช้ดักว่าถ้าไม่ได้ log in ห้ามเข้า
+        if(!this.isAuthen()){
+            alert("Restricted Area")
+            this.$router.push('/')
+        }else if(AuthUser.getters.user.role.name === "Admin"){
+            alert("You is not customer")
+            this.$router.push('/admin')
+        }   
+    },
+    components:{
+        HeadBarCusPage
     },
     methods:{
-
+        isAuthen(){
+            return AuthUser.getters.isAuthen
+        }
     }
 }
 </script>

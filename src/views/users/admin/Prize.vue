@@ -1,5 +1,6 @@
 <template>
 <div>
+    <head-bar-admin-page></head-bar-admin-page>
     <div class="table1">
         <table>
             <thead>
@@ -19,26 +20,15 @@
                     <td>image</td>
                     <td>{{ stock.item }}</td>
                     <td>{{ stock.points }}</td>
-                    <td>{{ stock.amounts }}</td>
-                    <button>Delete</button>                    
+                    <td >{{ stock.amounts }}</td>
+                    <button @click="editData(stock.id)" >Edit</button>    
+                    <button @click="deleteData(stock.id)" >Delete</button>                    
                     
                 </tr>
                 <!-- <tr v-for="(expense, index) in expense" :key="index" class = "expense"> -->
             
             </tbody>
         </table>
-        <div>
-            <label for="item">Item </label>
-            <input type="text" v-model="data.item">
-        </div>
-        <div>
-            <label for="points">Points </label>
-            <input type="text" v-model="data.points">
-        </div>
-        <div>
-            <label for="amounts">Amounts </label>
-            <input type="text" v-model="data.amounts">
-        </div>
         <button @click="addData">Add</button>
     </div>
     
@@ -46,45 +36,48 @@
 </template>
 
 <script>
+import HeadBarAdminPage from '@/components/headbar/HeadBarAdminPage'
 import StockItemsApi from '@/store/StockItemsApi'
+import AuthUser from '@/store/AuthUser'
 export default {
     data(){
         return{
-            data:{ 
-                item: "",
-                points: "",
-                amounts: ""
-            },
             stocks:[]
         }
     },
     async created(){
         await StockItemsApi.dispatch('fetchData')
         this.stocks = StockItemsApi.getters.data
-        // let user = AuthUser.getters.user.user_data
-        // this.historyPoint = user.points_usage_history_tables
+    },
+    mounted(){ 
+        if(!this.isAuthen()){
+            alert("Restricted Area")
+            this.$router.push('/')
+        }else if(AuthUser.getters.user.role.name === "Authenticated"){
+            alert("You is not admin")
+            this.$router.push('/customer')
+        }   
+    },
+    components:{
+        HeadBarAdminPage
+      
     },
     methods: {
-        clearForm(){
-            this.data = { 
-                item: "",
-                points: "",
-                amounts: ""
-            }
+        addData(){   
+            this.$router.push('/admin/stock/add-item')
         },
-        async addData(){   
-            let payload = {
-                item:this.data.item,
-                points:this.data.points,
-                amounts:this.data.amounts
-            }
-            let res = await StockItemsApi.dispatch('addData',payload) 
-            if(res.success){
-                this.clearForm()
-            }else{
-                // this.$swal("Add Failed", res.message, "error")
-            }
-        }
+        editData(id){
+            this.$router.push({name : 'EditItemInStock',params:{ id }})
+        },  
+        async deleteData(id){
+            StockItemsApi.dispatch('deleteDataInStock',id)
+            this.$swal("delete Success", "success")
+            this.$router.push('/admin')
+            
+        },
+        isAuthen(){
+            return AuthUser.getters.isAuthen
+        } 
     }
 }
 </script>

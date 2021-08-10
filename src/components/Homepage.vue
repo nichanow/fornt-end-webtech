@@ -92,56 +92,56 @@
           <img  src='../assets/shirt1.jpg' >
           <h1 class="name">RED CAT PATCH SHIRT</h1> 
           <h4>1,090 BAHT    :    30POINTS</h4>
-          <button>ADD TO SHOPPING BAG</button>
+          <button @click="buy(30,1090)">ADD TO SHOPPING BAG</button>
         </div> 
 
         <div class = "gucci">
           <img  src='../assets/shirt2.jpg' >
           <h1 class="name">BLUE BOXY SHIRT</h1> 
           <h4>1,020 BAHT    :    25POINTS</h4>
-          <button>ADD TO SHOPPING BAG</button>
+          <button @click="buy(25,1020)">ADD TO SHOPPING BAG</button>
         </div> 
 
         <div class = "gucci">
           <img  src='../assets/guccishort1.jpg' >
           <h1 class="name">BLACK DUCHESS SHORTS</h1>
           <h4>750 BAHT    :    15POINTS</h4> 
-          <button>ADD TO SHOPPING BAG</button>
+          <button @click="buy(15,750)">ADD TO SHOPPING BAG</button>
         </div>
 
         <div class = "gucci">
           <img  src='../assets/guccishort2.jpg' >
           <h1 class="name">BLUE WOOL SHORTS</h1> 
           <h4>750 BAHT    :    15POINTS</h4>
-          <button>ADD TO SHOPPING BAG</button>
+          <button @click="buy(15,750)">ADD TO SHOPPING BAG</button>
         </div> 
 
         <div class = "gucci">
           <img  src='../assets/shoe1.jpg' >
           <h1 class="name">MICKEY MOUSE SNEAKERS</h1> 
           <h4>3,590 BAHT    :    50POINTS</h4> 
-          <button>ADD TO SHOPPING BAG</button>
+          <button @click="buy(50,3590)">ADD TO SHOPPING BAG</button>
         </div> 
 
         <div class = "gucci">
           <img  src='../assets/shoe2.jpg' >
           <h1 class="name">WHITE BOOTS</h1>
           <h4>6,000 BAHT    :    65POINTS</h4> 
-          <button>ADD TO SHOPPING BAG</button>
+          <button @click="buy(65,6000)">ADD TO SHOPPING BAG</button>
         </div> 
 
         <div class = "gucci">
           <img  src='../assets/bag1.jpg' >
           <h1 class="name">WHITE G-PORCH WALLET</h1> 
           <h4>10,900 BAHT    :    90POINTS</h4> 
-          <button>ADD TO SHOPPING BAG</button>
+          <button @click="buy(90,10900)">ADD TO SHOPPING BAG</button>
         </div> 
 
         <div class = "gucci">
           <img  src='../assets/bag2.jpg' >
           <h1 class="name">BLACK G-PORCH WALLET</h1> 
           <h4>11,000 BAHT    :    90POINTS</h4> 
-          <button>ADD TO SHOPPING BAG</button>
+          <button @click="buy(90,11000)">ADD TO SHOPPING BAG</button>
         </div>
 
       </div>
@@ -150,8 +150,31 @@
 </template>
 
 <script>
+import UsersApi from '@/store/UsersApi'
+import HistoryApi from '@/store/HistoryApi'
 export default {
-
+  data(){
+      return {
+         user:{}
+      }
+    },
+  methods:{
+    async buy(point,prize){
+      console.log(this.user)
+      this.user.total_points += point
+        await UsersApi.dispatch('editDataInUser',this.user)
+            let payload = {
+                points: point,
+                prize: prize,
+                type: "shopping",
+                user: [this.user.id]
+            }
+            let res = await HistoryApi.dispatch('addDataGet',payload)
+            if(res.success){
+              alert("You received points")
+            }
+    }
+  }
 }
 </script>
 

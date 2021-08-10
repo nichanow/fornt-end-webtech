@@ -1,10 +1,10 @@
 <template>
 <div>
     
-    
+    <head-bar-cus-page></head-bar-cus-page>
     <div class="table1">
         <h3>Receive Point</h3>
-        <div class="totalPoint">total point  510</div>
+        <div class="totalPoint">points  {{ total_points }}</div>
         <footer></footer>
 
         </div>
@@ -33,30 +33,44 @@
             
             </tbody>
         </table>
-
    
 </div>
 </template>
 
 <script>
+import HeadBarCusPage from '@/components/headbar/HeadBarCusPage'
 import UsersApi from '@/store/UsersApi'
 import AuthUser from '@/store/AuthUser'
 export default {
     data(){
          return {
-             historyPoint: {}
+             historyPoint: {},
+             total_points:""
              }
     },
     async created(){
         let id = AuthUser.getters.user.id
         await UsersApi.dispatch('fetchData')
         this.historyPoint = UsersApi.getters.data[id-1].history_of_points_earned_tables
+        this.total_points = AuthUser.getters.user.user_data.total_points
         
-        // let user = AuthUser.getters.user.user_data
-        // this.historyPoint = user.points_usage_history_tables
+    },
+    mounted(){ // ใช้ดักว่าถ้าไม่ได้ log in ห้ามเข้า
+        if(!this.isAuthen()){
+            alert("Restricted Area")
+            this.$router.push('/')
+        }else if(AuthUser.getters.user.role.name === "Admin"){
+            alert("You is not customer")
+            this.$router.push('/admin')
+        }   
+    },
+    components:{
+        HeadBarCusPage
     },
     methods:{
-
+        isAuthen(){
+            return AuthUser.getters.isAuthen
+        }
     }
 }
 </script>

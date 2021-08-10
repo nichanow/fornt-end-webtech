@@ -21,10 +21,10 @@
                     <input type="file" id="img" name="img" accept="image/*">
                 </div>  -->
 
-                <div class="content">
+                <!-- <div class="content">
                     <label for="fullname">Fullname</label>
                     <input v-model="form.fullname" type="text" placeholder="fullname" autocomplete="off">
-                </div>
+                </div> -->
 
                 <div class="content">
                     <label for="username">Username</label>
@@ -40,7 +40,7 @@
                     <label for="password">Password </label>
                     <input v-model="form.password" type="password" placeholder="password" autocomplete="off">
                 </div>
-
+                
                 <div class="btn">
                     <button type="submit">Register</button>
                 </div>
@@ -68,14 +68,14 @@ export default {
         async register(){
             let res = await AuthUser.dispatch('register', this.form)
             if(res.success){
-                // this.$swal("Register success", `Welcom ${res.user.username}`,"success")
-                if(res.user.user_data.level === "admin"){
+                this.$swal("Register success", `Welcome ${res.user.username}`,"success")
+                if(res.user.role.name === "Admin"){
                     this.$router.push('/admin') 
                 }else{
                     this.$router.push('/customer') 
                 }
             }else{
-                // this.$swal("Register failed", res.message,"error")
+                this.$swal("Register failed", res.message,"error")
             }
         },
         toHome(){

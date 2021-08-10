@@ -9,7 +9,7 @@
             </div>
         </div>
        
-      <body>  
+      <div class="body">  
         <form @submit.prevent="login" class="box" method="POST"> 
             <h3>LOG IN</h3>
              
@@ -25,11 +25,10 @@
                 <!-- <button class="loginbtn">Log in</button> -->
                     <input type="submit" value="login">
                 </div>
-         
-            
+
         </form>
 
-      </body>
+      </div>
       
      
   </div>
@@ -50,19 +49,16 @@ export default {
         async login(){
             let res = await AuthUser.dispatch('login', this.form)
             if(res.success){
-                // this.$swal("Login Success", `Wellcom ${res.user.username}`, "success")
-                
-                
-                if(res.user.user_data.level === "admin"){
+                this.$swal("Login Success", `Welcome ${res.user.username}`, "success")
+
+                if(res.user.role.name === "Admin"){
                     this.$router.push('/admin') 
                 }else{
                     this.$router.push('/customer') 
                 }
-                
             }else{
-                // this.$swal("Login Failed", res.message, "error") 
+                this.$swal("Login Failed", res.message, "error") 
             }
-            
         },
         toHome(){
             this.$router.push('/')
@@ -118,12 +114,12 @@ h3{
     margin-top: 70px;
 }
 
-
-body{
-    // background-image: url("../../assets/logo.png");
+.body{
+    background-image: url("../../assets/background-login.jpg");
     background-size: cover;
     margin: 0;
     padding: 0;
+    height: 490.55px;
     font-family: sans-serif;
     background-color: brown;
 }
@@ -138,7 +134,7 @@ body{
     text-align: center;
 }
 .box h3{
-    color: saddlebrown;
+    color: rgb(255, 255, 255);
     text-transform: uppercase;
     font-weight: 700;
     
@@ -177,6 +173,10 @@ body{
 }
 .box input[type = "submit"]:hover{
     background: #ffc400ec;
+}
+
+label{
+    color: aliceblue;
 }
 
 

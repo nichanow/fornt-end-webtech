@@ -14,10 +14,21 @@
 
 <script>
 import Homepage from '@/components/Homepage'
+import AuthUser from "@/store/AuthUser"
 export default {
   components: {
     Homepage
   },
+  mounted(){ 
+        if(this.isAuthen()){
+          if(AuthUser.getters.user.role.name === "Authenticated"){
+            this.$router.push('/customer')
+            }else{
+              this.$router.push('/admin')
+            }
+        }     
+        
+    },
   methods:{
     toHome(){
       this.$router.push('/')
@@ -27,7 +38,10 @@ export default {
     },
     register(){
       this.$router.push('/register')
-    }
+    },
+        isAuthen(){
+            return AuthUser.getters.isAuthen
+        } 
   }
 }
 </script>

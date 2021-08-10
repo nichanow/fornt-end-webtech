@@ -1,17 +1,7 @@
 <template>
   <div>
-      <h1>ADMIN HOMEPAGE</h1>
-        <div class="topnav">
-            <div class = "headbar">
-                <button @click="logout">LOGOUT</button>
-                <button @click="toHome" class="active">HOME</button>
-            </div>
-         </div>
-     
-
-    
-    
-    <div v-if="num_pages === 0" class="list_option">
+      <head-bar-admin-page></head-bar-admin-page>
+    <div class="list_option">
       <div class="option">
         <img  src='@/assets/coin.jpg' >
         <button @click="leaderBoard" type="button" class="btn btn-outline-secondary">LEADERBOARD</button>
@@ -22,58 +12,35 @@
           <button @click="prize" type="button" class="btn btn-outline-success">PRIZE</button>
         </div>
     </div>
-
-    <div v-if="num_pages === 1">
-        <leader-board></leader-board>
-    </div>
-    <div v-if="num_pages === 2">
-        <prize></prize>
-    </div>
-    <!-- <div v-if="num_pages === 3">
-        
-    </div> -->
-    
   </div>
 </template>
 
 <script>
+import HeadBarAdminPage from '@/components/headbar/HeadBarAdminPage'
 import AuthUser from "@/store/AuthUser"
-import LeaderBoard from '@/components/Leaderboard'
-import Prize from '@/components/Prize'
 
 export default {
-    data(){
-        return{
-            num_pages:0
-        }
-    },
     components:{
-        LeaderBoard,
-        Prize,
-      
+        HeadBarAdminPage
     },
-    mounted(){ // ใช้ดักว่าถ้าไม่ได้ log in ห้ามเข้า
+    mounted(){ 
         if(!this.isAuthen()){
             // this.$swal("Restricted Area", "You have no permission", "warning")
             alert("Restricted Area")
             this.$router.push('/')
-        }else if(AuthUser.getters.user.user_data.level === "normal"){
+        }else if(AuthUser.getters.user.role.name === "Authenticated"){
             alert("You is not admin")
             this.$router.push('/customer')
         }   
     },
     methods:{
         leaderBoard(){
-            this.num_pages = 1
+            this.$router.push('/admin/leader-board')
             
         },
         prize(){
-            this.num_pages = 2
+            this.$router.push('/admin/stock-prize')
         },
-        toHome(){
-            this.num_pages = 3
-        },
-        
         logout(){
             AuthUser.dispatch('logout')
             this.$router.push('/')

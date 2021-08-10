@@ -1,6 +1,6 @@
 import Axios from 'axios'
 
-const api_endpoint = process.env.VUE_APP_POKEDEX_ENDPOINT || "http://localhost:1337"
+const api_endpoint = process.env.VUE_APP_CSSHOP_ENDPOINT || "http://localhost:1337"
 const auth_key = "auth-user" // keyName
 let auth_service = JSON.parse(localStorage.getItem(auth_key))
 const user = auth_service ? auth_service.user: "" 

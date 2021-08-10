@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 import Axios from 'axios'
 import AuthService from '@/services/AuthService'
 
-let api_endpoint = process.env.VUE_APP_POKEDEX_ENDPOINT || "http://localhost:1337"
+let api_endpoint = process.env.VUE_APP_CSSHOP_ENDPOINT || "http://localhost:1337"
 
 Vue.use(Vuex)
 
@@ -12,21 +12,15 @@ export default new Vuex.Store({
     data:[]
   },
   getters:{
-    data: (state) => state.data // ส่ง state แล้ว return data เพื่อเอาข้อมูลไปใช้งาน
+    data: (state) => state.data
   },
   mutations: {
     fetch(state,{res}){ 
       state.data = res.data
     },
-    add(state,payload){ // ถ้าไม่ใส่ {} เราสามารถตั้งชื่อไม่เหมือนเดิมได้
+    add(state,payload){ 
       state.data.push(payload)
     },
-//     edit(state,index,data){ // แก้ไขข้อมูลใน state
-//       // state.data[index].name = data.name // เราต้องเอาค่า index มาด้วยเพื่อให้รู้ส่าจะแก้ที่ตัวไหน
-//       // state.data[index].name_jp = data.name_jp
-//       // state.data[index].pokemos_types = data.pokemon_types 
-//       state.data[index] = data
-//     }
   },
   actions: {
     async fetchData({ commit }){ 
@@ -40,7 +34,8 @@ export default new Vuex.Store({
       let body = { 
         item: payload.item,
         points: payload.points,
-        amounts: payload.amounts
+        amounts: payload.amounts,
+        check_date:payload.check_date
       }
       try{
         let headers = AuthService.getApiHeader()
@@ -73,28 +68,24 @@ export default new Vuex.Store({
        }
      }
     },
-    // async editPokemon({commit},payload){
-    //   // call api to edit data in to DB
-    //   // call api to add data in to DB
-    //   // ["fire","flying"] => ["name_in=fire","name_in=flying"]
-    //   // name_in=fire&name_in=flying
-    //   let qs = payload.pokemon_types.map(it => "name_in="+it).join("&")
-    //   let res_types = await Axios.get(api_endpoint + "/pokemon-types?" + qs) // เพื่อเอาข้อมูล id ของตาราง types มาใช้
+    async editDataInUser({commit},payload){
+      let url = api_endpoint + "/users-data/" + payload.id
+      let body = { 
+        age: payload.age,
+        check_date: payload.check_date,
+        gender: payload.gender,
+        id: payload.id,
+        name: payload.name,
+        total_points: payload.total_points,
+      }
+      let headers = AuthService.getApiHeader()
+      let res = await Axios.put(url,body,headers) 
+      if(res.status === 200){ 
 
-    //   let url = api_endpoint + "/monsters/" + payload.id // url สำหรับแก้ไขตัวนั้น ๆ
-    //   let body = {  // เนื้อหาที่จะแก้ไข
-    //     name: payload.name,
-    //     name_jp: payload.name_jp,
-    //     pokemon_types: res_types.data.map( it => it.id) // ใช้ id ในการใส่ types 
-    //   }
-    //   let res = await Axios.put(url,body) // edit data in DB โดยการ put ผ่าน url & body
-    //   if(res.status === 200){ // เช็คว่าบันทึกลง DB เรียบร้อย
-    //     commit('edit',payload.index,res.data) // update data to state
-    //     // ใช้วืธี load หน้าใหม่เพื่อ update state จะดีกว่า
-    //   }else{
-    //     console.error(res)
-    //   }
-    // }
+      }else{
+        console.error(res)
+      }
+    }
   },
   modules: {
   }

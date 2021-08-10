@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 import Axios from 'axios'
 import AuthService from '@/services/AuthService'
 
-let api_endpoint = process.env.VUE_APP_POKEDEX_ENDPOINT || "http://localhost:1337"
+let api_endpoint = process.env.VUE_APP_CSSHOP_ENDPOINT || "http://localhost:1337"
 
 Vue.use(Vuex)
 
@@ -44,12 +44,7 @@ actions: {
         success: true,
         data: res.data
       }
-    }else{
-      console.error(res)
-      return {
-        success: false,
-        message: "Unknown status code: " + res.status 
-      }
+    
     }
    }catch(e){
      if(e.response.status === 403){
@@ -65,7 +60,31 @@ actions: {
       }
      }
    }
-  }
+  },
+  async editDataInStock({commit},payload){
+      let url = api_endpoint + "/rewards/" + payload.id
+      let body = { 
+        item: payload.item,
+        amounts: payload.amounts-1
+      }
+      let headers = AuthService.getApiHeader()
+      let res = await Axios.put(url,body,headers) // edit data in DB โดยการ put ผ่าน url & body
+      if(res.status === 200){ // เช็คว่าบันทึกลง DB เรียบร้อย
+        return res.status 
+      }else{
+        console.error(res)
+      }
+    },
+    async deleteDataInStock({commit},id){
+      let url = api_endpoint + "/rewards/" + id
+      let headers = AuthService.getApiHeader()
+      let res = await Axios.delete(url,headers) 
+      if(res.status === 200){ 
+        return res.status 
+      }else{
+        console.error(res)
+      }
+    }
 },
 modules: {
 }
